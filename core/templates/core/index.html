@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Aula 6 - Cadastro de contatos {% endblock %}
+<h3>Adicionar Contatos</h3>
+{%block content%}
+<form action="." method="post">{% csrf_token %}
+	{{ form.as_p }}
+	<p><input type="submit" value="Envia Mensagem" /></p>
+</form>
+<hr>
+<h3>Lista de contatos cadastrados</h3>
+
+{% if contatos %}
+	{% for contato in contatos %}
+		{{ contato.first_name }} {{ contato.last_name }}<br/>
+	{% endfor %}
+{% else %}
+	Não temos contatos cadastrados
+{% endif %}
+
+{% endblock %}
