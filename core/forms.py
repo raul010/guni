@@ -6,8 +6,6 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
 
-
-
 ## Classe antes do ModelForm
 
 # class ContactForm(forms.Form):

@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %} Aula 6 - Cadastro de contatos {% endblock %}
+{% block extrahead %}
+		<link href="{% static "core/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+{% endblock %}
+
 <h3>Adicionar Contatos</h3>
 {%block content%}
-<form action="." method="post">{% csrf_token %}
-	{{ form.as_p }}
-	<p><input type="submit" value="Envia Mensagem" /></p>
+<form class="form-horizontal" action="." method="post">
+	{% include 'form.html' %}
+	<div class="form-actions">
+        <input class="btn btn-default btn-large" type="submit" value="Submit"/>
+        {% block extra_buttons %}
+        {% endblock extra_buttons %}
+    </div>
 </form>
 <hr>
 <h3>Lista de contatos cadastrados</h3>
@@ -18,4 +27,9 @@
 	Não temos contatos cadastrados
 {% endif %}
 
+{% endblock %}
+
+{% block extrajs %}
+	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	    <script src="{% static "core/bootstrap/js/bootstrap.js" %}"></script>
 {% endblock %}
